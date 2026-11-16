@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTS COMPUTER & GADGET — General Sale (No Serial)</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#071d49,#0d4d9c);color:#fff;padding:18px 20px;position:sticky;top:0;z-index:10}
+.header-in{max-width:1250px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+h1,h2,h3,p{margin-top:0}.brand{font-size:24px;font-weight:800}.sub{opacity:.85;font-size:13px;margin-top:4px}
+nav{display:flex;gap:8px;flex-wrap:wrap}.navbtn{border:0;background:#ffffff18;color:#fff;padding:10px 13px;border-radius:8px;cursor:pointer;font-weight:700}.navbtn.active,.navbtn:hover{background:#fff;color:#0b3977}
+main{max-width:1250px;margin:20px auto;padding:0 15px}
+.page{display:none}.page.active{display:block}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.card{background:#fff;border-radius:12px;padding:17px;box-shadow:0 3px 14px #0000000c;border:1px solid #e5eaf2}.label{font-size:13px;color:#687386}.value{font-size:26px;font-weight:800;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.box{background:#fff;border:1px solid #e2e7ef;border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:0 3px 14px #00000009}
+label{font-size:13px;font-weight:700;display:block;margin:10px 0 5px}input,select,textarea{width:100%;padding:10px 11px;border:1px solid #ccd5e3;border-radius:8px;background:#fff;font-size:14px}textarea{min-height:75px;resize:vertical}
+button{border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700}.primary{background:#0d4d9c;color:#fff}.success{background:#15803d;color:#fff}.danger{background:#c62828;color:#fff}.muted{background:#edf1f6;color:#26364f}.warning{background:#f59e0b;color:#111}
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #e7ebf1;padding:9px;text-align:left;vertical-align:top}th{background:#f6f8fb}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800}.in{background:#dcfce7;color:#166534}.sold{background:#fee2e2;color:#991b1b}
+.search{margin-bottom:10px}.empty{text-align:center;color:#748096;padding:25px}
+#toast{position:fixed;right:18px;bottom:18px;background:#172033;color:#fff;padding:12px 16px;border-radius:9px;display:none;z-index:99;box-shadow:0 8px 30px #0004}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;z-index:50;padding:15px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:12px;max-width:850px;width:100%;max-height:92vh;overflow:auto;padding:20px}
+.invoice{font-family:Arial,"Noto Sans Bengali",sans-serif;color:#111}.invoice-head{text-align:center;border-bottom:2px solid #111;padding-bottom:10px}.invoice-head h1{margin:0;font-size:25px}.inv-contacts{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 16px;margin-top:4px;font-size:13px}.inv-c{display:inline-flex;align-items:center;gap:5px}.inv-ico{width:1em;height:1em;fill:currentColor;flex:none}.invoice-meta{display:flex;justify-content:space-between;gap:15px;margin:12px 0}.invoice table{border:1px solid #222}.invoice th,.invoice td{border:1px solid #222}.invoice-total{text-align:right;font-size:18px;font-weight:800;margin-top:12px}.signs{display:flex;justify-content:space-between;margin-top:55px}.small{font-size:12px;color:#697386}
+.invoice{position:relative;overflow:hidden}
+.invoice-watermark{position:absolute;top:50%;left:50%;width:70%;max-width:520px;height:auto;transform:translate(-50%,-50%);opacity:.08;pointer-events:none;z-index:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.invoice-content-layer{position:relative;z-index:1}
+@media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.row3{grid-template-columns:1fr}.header-in{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}.row{grid-template-columns:1fr}.serial-grid{grid-template-columns:1fr}nav{width:100%}.navbtn{flex:1}}
+
+code{background:#eef2f8;padding:2px 6px;border-radius:5px}
+.header-in{flex-direction:row!important;align-items:center!important}
+nav{display:none;position:absolute;top:100%;left:12px;z-index:30;flex-direction:column;align-items:stretch;gap:6px;background:#0b2a5c;padding:12px;width:min(300px,92vw);border-radius:0 0 12px 12px;box-shadow:0 12px 30px #0006}
+nav.open{display:flex}
+nav .navbtn{text-align:left;width:100%;flex:none}
+#menuBtn{font-size:22px;line-height:1;padding:8px 13px}
+
+:root{
+ --ui-bg:#f3f6fb;--ui-surface:#fff;--ui-ink:#17243b;--ui-muted:#718096;
+ --ui-line:#e3e9f2;--ui-primary:#2458d3;--ui-primary-dark:#173f9e;
+ --ui-soft:#edf3ff;--ui-radius:16px;--ui-shadow:0 8px 28px rgba(20,42,80,.065);
+ --ui-shadow-hover:0 14px 34px rgba(20,42,80,.11);
+}
+html{scroll-behavior:smooth;background:var(--ui-bg)}
+body{font-family:Inter,"Noto Sans Bengali",Arial,sans-serif!important;background:var(--ui-bg)!important;color:var(--ui-ink)!important;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font-family:inherit!important}
+button{min-height:40px;padding:10px 16px;border-radius:10px!important;font-size:13px;font-weight:700;letter-spacing:.05px;transition:transform .16s ease,box-shadow .16s ease,background .16s ease,border-color .16s ease}
+button:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(23,55,110,.12)}
+button:active{transform:translateY(0)}
+button:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.primary{background:linear-gradient(135deg,#3269e8,#204dbd)!important;color:#fff!important;box-shadow:0 4px 10px rgba(36,88,211,.16)}
+.success{background:linear-gradient(135deg,#159b69,#087a50)!important;color:#fff!important}
+.danger{background:#fff0f0!important;color:#c23434!important;border:1px solid #ffd5d5!important}
+.warning{background:#fff5df!important;color:#96600a!important}
+.muted{background:#eef2f8!important;color:#34445d!important;border:1px solid #e1e7f0!important}
+header.no-print{background:linear-gradient(115deg,#101f42 0%,#173b79 58%,#2056a8 100%)!important;padding:18px 28px!important;box-shadow:0 8px 24px rgba(10,31,68,.18);border-bottom:1px solid rgba(255,255,255,.1)}
+.header-in{max-width:1480px!important;min-height:54px;gap:24px!important}
+.brand{font-size:21px!important;letter-spacing:.35px;font-weight:850!important;line-height:1.25}
+.sub{font-size:12px!important;color:#d5e3ff;letter-spacing:.15px;margin-top:6px!important}
+nav{gap:6px!important;align-items:center}
+.navbtn{background:rgba(255,255,255,.095)!important;border:1px solid rgba(255,255,255,.09)!important;color:#eaf1ff!important;padding:10px 13px!important;min-height:38px;border-radius:9px!important;font-size:12px!important;white-space:nowrap}
+.navbtn.active,.navbtn:hover{background:#fff!important;color:#173f86!important;border-color:#fff!important;box-shadow:0 4px 14px rgba(0,0,0,.12)!important}
+main{max-width:1480px!important;margin:28px auto!important;padding:0 26px!important}
+.page{animation:uiFadeIn .22s ease both}
+@keyframes uiFadeIn{from{opacity:.65;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+h1,h2,h3{color:var(--ui-ink)}
+h2{font-size:18px!important;font-weight:800!important;letter-spacing:-.25px;margin:0 0 18px!important;display:flex;align-items:center;gap:8px}
+h3{font-size:15px!important;font-weight:750!important}
+.cards{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important;margin-bottom:20px!important}
+.card{position:relative;overflow:hidden;background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;border-radius:16px!important;padding:21px 22px!important;min-height:116px;box-shadow:var(--ui-shadow)!important;transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-3px);box-shadow:var(--ui-shadow-hover)!important}
+.card:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,#4e83f4,#2458d3);border-radius:4px}
+.label{font-size:12px!important;color:var(--ui-muted)!important;font-weight:650;letter-spacing:.15px}
+.value{font-size:29px!important;line-height:1.2;margin-top:10px!important;font-weight:850!important;letter-spacing:-.7px;color:#1b3156}
+.box{background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;border-radius:var(--ui-radius)!important;padding:23px!important;margin-bottom:19px!important;box-shadow:var(--ui-shadow)!important}
+.grid2{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:19px!important}
+label{font-size:12px!important;font-weight:750!important;color:#40516c!important;margin:13px 0 7px!important;letter-spacing:.1px}
+input,select,textarea{width:100%;min-height:43px;padding:10px 13px!important;border:1px solid #d7dfeb!important;border-radius:10px!important;background:#fff!important;color:#1c2b43!important;font-size:13px!important;outline:none;transition:border-color .15s ease,box-shadow .15s ease}
+input::placeholder,textarea::placeholder{color:#9aa7b9}
+input:focus,select:focus,textarea:focus{border-color:#5d87e8!important;box-shadow:0 0 0 3px rgba(49,105,232,.12)!important}
+textarea{min-height:100px;line-height:1.55}
+.row,.row3{gap:15px!important}
+.actions{gap:9px!important;margin-top:16px!important;align-items:center}
+.search{margin:0 0 14px!important;max-width:520px;min-height:44px!important;background:#f9fbfe!important}
+.box>div[style*="overflow:auto"]{border:1px solid var(--ui-line);border-radius:11px;overflow:auto!important}
+table{font-size:12.5px!important;border-collapse:separate!important;border-spacing:0!important;min-width:600px}
+th,td{padding:12px 13px!important;border-bottom:1px solid #edf0f5!important;line-height:1.5}
+th{background:#f5f7fb!important;color:#53627a!important;font-size:11px!important;font-weight:800!important;letter-spacing:.35px;text-transform:none;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0!important}
+tbody tr:hover td{background:#f8faff}
+td button{min-height:33px;padding:7px 11px!important;font-size:11px!important}
+.badge{padding:5px 9px!important;font-size:10px!important;letter-spacing:.2px}
+.in{background:#e7f8ef!important;color:#14734b!important}.sold{background:#fff0f0!important;color:#b72d37!important}
+.empty{padding:32px!important;color:#8995a8!important;font-size:13px}
+.small{font-size:11.5px!important;color:#78869a!important;line-height:1.55}
+#toast{border:1px solid rgba(255,255,255,.12);border-radius:12px!important;padding:13px 18px!important;box-shadow:0 12px 35px rgba(10,25,50,.25)!important;font-size:13px;font-weight:650}
+.modal{backdrop-filter:blur(5px);background:rgba(13,25,48,.58)!important}
+.modal-box{border:1px solid rgba(255,255,255,.5);border-radius:18px!important;padding:26px!important;box-shadow:0 24px 80px rgba(8,22,48,.25)!important}
+#loginView .box{border-radius:20px!important;padding:30px!important;box-shadow:0 18px 55px rgba(20,42,80,.12)!important;border-top:5px solid #2458d3!important}
+#loginView h2{font-size:21px!important;line-height:1.35}
+#invoiceModal .modal-box{max-width:940px!important}
+#invoiceContent{padding:8px!important}
+.invoice-head{padding-bottom:14px!important}
+.invoice-head h1{font-size:25px!important}
+.invoice table{min-width:0!important}
+@media(max-width:1100px){
+ header.no-print{padding:16px 20px!important}
+ .header-in{align-items:flex-start!important;flex-direction:column!important;gap:14px!important}
+ nav{width:100%;overflow-x:auto;flex-wrap:nowrap!important;padding:2px 0 5px;scrollbar-width:thin}
+ .navbtn{flex:0 0 auto!important}
+ main{padding:0 20px!important;margin:22px auto!important}
+}
+@media(max-width:760px){
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+ .card{min-height:100px;padding:16px!important;border-radius:13px!important}
+ .value{font-size:24px!important}
+ .box{padding:17px!important;border-radius:14px!important}
+ .grid2{grid-template-columns:1fr!important;gap:12px!important}
+ .row3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ main{padding:0 14px!important;margin:17px auto!important}
+ header.no-print{padding:14px 15px!important}
+ .brand{font-size:18px!important}
+ h2{font-size:16px!important;margin-bottom:14px!important}
+}
+@media(max-width:480px){
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .row,.row3{grid-template-columns:1fr!important}
+ .card{padding:14px 13px!important;min-height:94px}
+ .label{font-size:10.5px!important}
+ .value{font-size:21px!important}
+ .box{padding:14px!important}
+ .actions button{flex:1 1 auto}
+ .modal{padding:8px!important}
+ .modal-box{padding:16px!important;max-height:96vh!important}
+ #loginView .box{margin:22px 12px!important;padding:22px!important}
+}
+
+@page { size: A4 portrait; margin: 7mm; }
+@media print {
+  html, body { width:196mm!important; margin:0!important; padding:0!important; background:#fff!important; }
+  body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body > *:not(#invoiceModal) { display:none!important; }
+  #invoiceModal { display:block!important; position:static!important; inset:auto!important; width:196mm!important; height:auto!important; min-height:0!important; margin:0!important; padding:0!important; overflow:visible!important; background:#fff!important; }
+  #invoiceModal > .modal-box { display:block!important; position:static!important; width:196mm!important; max-width:196mm!important; height:auto!important; max-height:none!important; margin:0!important; padding:0!important; border:0!important; border-radius:0!important; box-shadow:none!important; overflow:visible!important; background:#fff!important; }
+  #invoiceModal .no-print, #invHistory, #toast { display:none!important; }
+  #invoiceContent { display:block!important; position:relative!important; width:196mm!important; max-width:196mm!important; min-width:196mm!important; height:auto!important; min-height:0!important; margin:0!important; padding:0!important; overflow:visible!important; color:#111!important; background:#fff!important; font-family:Arial,"Noto Sans Bengali",sans-serif!important; font-size:9pt!important; line-height:1.22!important; transform:none!important; }
+  #invoiceContent * { box-sizing:border-box!important; }
+  #invoiceContent .invoice-content-layer { display:block!important; position:relative!important; width:100%!important; }
+  #invoiceContent .invoice-head { text-align:center!important; padding:0 0 4mm!important; margin:0 0 3mm!important; border-bottom:1.2pt solid #1d3557!important; }
+  #invoiceContent .invoice-head h1 { font-size:17pt!important; line-height:1.15!important; margin:0 0 1mm!important; letter-spacing:.2pt!important; }
+  #invoiceContent .invoice-head h2 { display:inline-block!important; font-size:11pt!important; margin:2mm 0 0!important; padding:1.2mm 5mm!important; border:1pt solid #1d3557!important; border-radius:2mm!important; }
+  #invoiceContent .invoice-meta { display:grid!important; grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important; align-items:start!important; gap:5mm!important; width:100%!important; margin:3mm 0!important; font-size:8.2pt!important; line-height:1.35!important; }
+  #invoiceContent .invoice-meta > div { min-width:0!important; width:auto!important; overflow-wrap:anywhere!important; }
+  #invoiceContent .invoice-meta > div:last-child { text-align:right!important; }
+  #invoiceContent table { width:100%!important; max-width:100%!important; min-width:0!important; border-collapse:collapse!important; table-layout:fixed!important; font-size:8pt!important; margin:2mm 0!important; }
+  #invoiceContent th, #invoiceContent td { border:1px solid #64748b!important; padding:2.2mm 1.6mm!important; vertical-align:top!important; line-height:1.22!important; overflow-wrap:anywhere!important; word-break:normal!important; }
+  #invoiceContent th { background:#eef3f9!important; color:#14243b!important; font-weight:700!important; text-align:center!important; }
+  #invoiceContent .invoice-items th:nth-child(1), #invoiceContent .invoice-items td:nth-child(1) { width:7%!important; text-align:center!important; }
+  #invoiceContent .invoice-items th:nth-child(2), #invoiceContent .invoice-items td:nth-child(2) { width:41%!important; }
+  #invoiceContent .invoice-items th:nth-child(3), #invoiceContent .invoice-items td:nth-child(3) { width:18%!important; }
+  #invoiceContent .invoice-items th:nth-child(4), #invoiceContent .invoice-items td:nth-child(4) { width:9%!important; text-align:center!important; }
+  #invoiceContent .invoice-items th:nth-child(5), #invoiceContent .invoice-items td:nth-child(5) { width:12%!important; text-align:right!important; }
+  #invoiceContent .invoice-items th:nth-child(6), #invoiceContent .invoice-items td:nth-child(6) { width:13%!important; text-align:right!important; }
+  #invoiceContent .invoice-summary { display:grid!important; grid-template-columns:minmax(0,1fr) 78mm!important; gap:5mm!important; align-items:start!important; margin-top:3mm!important; }
+  #invoiceContent .invoice-summary .summary-left { min-width:0!important; font-size:8pt!important; line-height:1.4!important; overflow-wrap:anywhere!important; }
+  #invoiceContent .invoice-summary .summary-right { width:78mm!important; min-width:78mm!important; margin:0!important; font-size:8pt!important; }
+  #invoiceContent .invoice-summary .summary-right td { padding:1.6mm 2mm!important; }
+  #invoiceContent .invoice-total { font-size:10pt!important; margin-top:2mm!important; }
+  #invoiceContent .signs { display:flex!important; justify-content:space-between!important; align-items:flex-end!important; gap:15mm!important; margin-top:12mm!important; font-size:8pt!important; break-inside:avoid!important; page-break-inside:avoid!important; }
+  #invoiceContent .signs span { min-width:55mm!important; }
+  #invoiceContent .small { font-size:7pt!important; line-height:1.25!important; color:#475569!important; }
+  #invoiceContent .invoice-watermark { position:absolute!important; top:50%!important; left:50%!important; width:110mm!important; max-width:110mm!important; height:auto!important; opacity:.07!important; transform:translate(-50%,-50%)!important; z-index:0!important; }
+  #invoiceContent .invoice-content-layer { position:relative!important; z-index:1!important; }
+  #invoiceContent .inv-contacts { font-size:8pt!important; gap:1.5mm 5mm!important; margin-top:1mm!important; }
+  #invoiceContent .inv-ico { width:2.6mm!important; height:2.6mm!important; }
+  #invoiceContent tr { break-inside:avoid!important; page-break-inside:avoid!important; }
+}
+</style>
+</head>
+<body>
+
+<div id="loginView" style="display:none">
+ <div class="box" style="max-width:390px;margin:70px auto">
+  <h2 style="margin-bottom:4px">ARTS COMPUTER &amp; GADGET</h2>
+  <div class="small" style="margin-bottom:10px">General Sale — Login</div>
+  <label>Email / Username</label><input id="lEmail" autocomplete="username">
+  <label>Password</label><input id="lPass" type="password" autocomplete="current-password">
+  <div id="loginErr" style="color:#c62828;font-size:13px;margin-top:10px;min-height:18px"></div>
+  <div class="actions"><button class="primary" id="btnLogin" style="width:100%">Login</button></div>
+  <div class="small" style="margin-top:14px">Default: <b>admin</b> / <b>admin123</b></div>
+ </div>
+</div>
+
+<div id="appView" style="display:none">
+<header class="no-print">
+ <div class="header-in">
+  <button id="menuBtn" class="navbtn" data-act="toggleMenu" aria-label="Menu">☰</button>
+  <div style="flex:1"><div class="brand">ARTS COMPUTER &amp; GADGET</div><div class="sub"><span id="pageName"></span><span id="who"></span> • <span id="netState"></span></div></div>
+  <nav id="mainNav">
+   <button class="navbtn active" data-page="dashboard">Dashboard</button>
+   <button class="navbtn" data-page="sale">New Sale</button>
+   <button class="navbtn" data-page="invoices">Invoices</button>
+   <button class="navbtn" data-page="dues">Baki / Due</button>
+   <button class="navbtn admin-only" data-page="staff">Staff</button>
+   <button class="navbtn" data-act="logout">Logout</button>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section id="dashboard" class="page active">
+ <div class="cards">
+  <div class="card"><div class="label">মোট চালান</div><div class="value" id="dInvoices">0</div></div>
+  <div class="card"><div class="label">মোট পণ্য বিক্রি</div><div class="value" id="dQty">0</div></div>
+  <div class="card"><div class="label">মোট বিক্রির টাকা</div><div class="value" id="dSales">৳0</div></div>
+  <div class="card"><div class="label">মোট বাকি</div><div class="value" id="dDue">৳0</div></div>
+ </div>
+ <div class="box admin-only"><h2>💰 Admin হিসাব</h2><div id="adminStats"></div>
+  <div class="actions"><button class="primary" data-act="export">⬇️ Backup Download</button><button class="muted" data-act="import">⬆️ Restore</button><input type="file" id="importFile" accept=".json,application/json" style="display:none"></div>
+ </div>
+ <div class="grid2">
+  <div class="box"><h2>🧾 Recent Sales</h2><div id="recentSales"></div></div>
+  <div class="box"><h2>📒 বাকি আছে যাদের</h2><div id="dueList"></div></div>
+ </div>
+</section>
+
+<section id="sale" class="page">
+ <div id="editBanner" class="box" style="display:none;background:#eff6ff;border-color:#93c5fd"></div>
+ <div class="box">
+  <h2 id="saleTitle">🛒 New Sale / Invoice (General)</h2>
+  <div class="row3">
+   <div><label>Customer Name</label><input id="cName"></div>
+   <div><label>Mobile</label><input id="cPhone" inputmode="tel"></div>
+   <div><label>Address</label><input id="cAddress"></div>
+  </div>
+  <div class="row3">
+   <div><label>Bill Type</label><select id="sBill"><option value="Cash">Cash</option><option value="Due">Due (বাকি)</option></select></div>
+   <div><label>Payment Method</label><select id="sPay"><option>Cash</option><option>bKash</option><option>Nagad</option><option>Card / Bank</option></select></div>
+   <div><label>Sales Person</label><input id="sPerson"></div>
+  </div>
+  <div class="row3">
+   <div><label>Ref No (ঐচ্ছিক)</label><input id="sRef"></div>
+   <div><label>Payment Date (ঐচ্ছিক)</label><input id="sPayDate" type="date"></div>
+   <div><label>Narration (ঐচ্ছিক)</label><input id="sNarr"></div>
+  </div>
+ </div>
+ <div class="box">
+  <h2>📦 Cart — পণ্যের তালিকা</h2>
+  <div id="gLines" style="margin-top:12px"></div>
+  <div class="actions"><button class="muted" data-act="addLine">➕ আরেকটি পণ্য যোগ করুন</button></div>
+  <div style="overflow:auto;margin-top:12px"><table><thead><tr><th>SL</th><th>Product Description</th><th>Warranty</th><th>Qty</th><th>Unit Price</th><th>Amount</th><th></th></tr></thead><tbody id="cartBody"></tbody></table></div>
+ </div>
+ <div class="grid2">
+  <div class="box">
+   <h2>💵 হিসাব</h2>
+   <div class="row3">
+    <div><label>Less Discount</label><input id="sDisc" type="number" min="0"></div>
+    <div><label>Add Extra Charges</label><input id="sExtra" type="number" min="0"></div>
+    <div><label>Paid (পেলেন)</label><input id="sPaid" type="number" min="0"></div>
+   </div>
+   <div class="actions"><button class="success" id="btnSale">Invoice তৈরি করুন</button><button class="muted" data-act="clearSale">Clear</button></div>
+  </div>
+  <div class="box"><h2>🧮 মোট</h2><div id="sTotals"></div></div>
+ </div>
+</section>
+
+<section id="invoices" class="page">
+ <div class="box">
+  <h2>🧾 Invoices</h2>
+  <input class="search" id="invSearch" placeholder="Invoice / customer / mobile / product দিয়ে search করুন">
+  <div style="overflow:auto"><table><thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Items</th><th>Qty</th><th>Net</th><th>Status</th><th></th></tr></thead><tbody id="invTable"></tbody></table></div>
+ </div>
+</section>
+
+<section id="dues" class="page">
+ <div class="box"><h2>📒 Baki / Due খাতা</h2><div id="dueTotal" style="margin-bottom:10px"></div>
+  <h3 style="margin:8px 0">Customer অনুযায়ী</h3>
+  <div style="overflow:auto"><table><thead><tr><th>Customer</th><th>Mobile</th><th>Invoice</th><th>মোট বাকি</th></tr></thead><tbody id="dueSummary"></tbody></table></div>
+ </div>
+ <div class="box"><h2>Invoice অনুযায়ী বাকি</h2>
+  <div style="overflow:auto"><table><thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Net</th><th>Paid</th><th>Due</th><th></th></tr></thead><tbody id="dueTable"></tbody></table></div>
+ </div>
+</section>
+
+<section id="staff" class="page admin-only">
+ <div class="box">
+  <h2>👥 Staff Accounts</h2>
+  <div style="overflow:auto"><table><thead><tr><th>Name</th><th>Username</th><th>Role</th><th></th></tr></thead><tbody id="staffTable"></tbody></table></div>
+ </div>
+ <div class="box">
+  <h2>➕ নতুন Staff যোগ করুন</h2>
+  <div class="row3">
+   <div><label>Name</label><input id="stName"></div>
+   <div><label>Username</label><input id="stEmail"></div>
+   <div><label>Password (কমপক্ষে ৬ অক্ষর)</label><input id="stPass" type="text"></div>
+  </div>
+  <label>Role</label><select id="stRole"><option value="staff">Staff</option><option value="admin">Admin</option></select>
+  <div class="actions"><button class="primary" id="btnAddStaff">Account বানান</button></div>
+ </div>
+</section>
+</main>
+</div>
+
+<div id="invoiceModal" class="modal"><div class="modal-box">
+ <div class="no-print actions" style="justify-content:flex-end;margin-top:0"><button class="primary" data-act="print">🖨️ Print Customer Copy</button><button class="muted" data-act="closeInvoice">Close</button></div>
+ <div id="invoiceContent" class="invoice"></div>
+ <div id="invHistory" class="no-print small" style="margin-top:12px"></div>
+</div></div>
+
+<div id="toast"></div>
+
+<script>
+const SHOP={prefix:'GEN',name:'ARTS COMPUTER & GADGET',address:'Below Exim Bank, Lalpur Bazar, Natore',phones:['01333872691','01745285825'],email:'artcomputer2025@gmail.com',facebook:'arts online market',note:'Warranty will be void if any sticker removed, physically damaged, water damaged or burnt. No warranty for any kind of adapter.'};
+const STAFF_ALLOWED=['sale'];
+const LOGO="ChatGPT_Image_May_23__2026__12_18_31_AM-removebg-preview.png";
+const LS_USERS='gs_users',LS_SALES='gs_sales',LS_COUNTER='gs_counter',LS_SESSION='gs_session';
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'৳'+Number(n||0).toLocaleString('en-IN');
+const fmtDT=d=>new Date(d).toLocaleString('en-GB');
+const fmtD=d=>new Date(d).toLocaleDateString('en-GB');
+const num=n=>Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+const nkey=s=>String(s||'').trim().toLowerCase().replace(/\s+/g,' ');
+function toast(m){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display='none',4200);}
+function addMonths(date,m){const d=new Date(date),day=d.getDate();d.setDate(1);d.setMonth(d.getMonth()+m);const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();d.setDate(Math.min(day,last));return d;}
+function show(id){['loginView','appView'].forEach(x=>$(x).style.display=x===id?'block':'none');}
+
+/* ---------- localStorage helpers ---------- */
+function lsGet(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){toast('Storage সম্পূর্ণ হয়নি!');}}
+
+/* ---------- default users ---------- */
+function ensureUsers(){
+ let users=lsGet(LS_USERS,null);
+ if(!users||!Array.isArray(users)||!users.length){
+  users=[{id:'admin',name:'Admin',username:'admin',password:'admin123',role:'admin',createdAt:new Date().toISOString()}];
+  lsSet(LS_USERS,users);
+ }
+ return users;
+}
+function getUsers(){return ensureUsers();}
+function saveUsers(u){lsSet(LS_USERS,u);}
+
+/* ---------- data ---------- */
+let gsales=[],staff=[],user=null,profile=null;
+const isAdmin=()=>profile&&profile.role==='admin';
+
+function loadSales(){
+ gsales=lsGet(LS_SALES,[]);
+ gsales.sort((a,b)=>new Date(b.date)-new Date(a.date));
+}
+function saveSales(){lsSet(LS_SALES,gsales);}
+function getCounter(){return lsGet(LS_COUNTER,0);}
+function setCounter(n){lsSet(LS_COUNTER,n);}
+
+/* ---------- auth ---------- */
+function checkSession(){
+ const s=lsGet(LS_SESSION,null);
+ if(!s||!s.uid)return false;
+ const users=getUsers(),u=users.find(x=>x.id===s.uid);
+ if(!u||u.role==='disabled')return false;
+ user={uid:u.id};profile=u;
+ return true;
+}
+function doLogin(){
+ const em=$('lEmail').value.trim(),pw=$('lPass').value;
+ if(!em||!pw){$('loginErr').textContent='Username ও Password দিন।';return;}
+ $('btnLogin').disabled=true;$('loginErr').textContent='';
+ const users=getUsers(),u=users.find(x=>x.username===em);
+ if(!u||u.password!==pw){$('loginErr').textContent='Username বা Password ভুল।';$('btnLogin').disabled=false;return;}
+ if(u.role==='disabled'){$('loginErr').textContent='এই অ্যাকাউন্ট বন্ধ আছে।';$('btnLogin').disabled=false;return;}
+ user={uid:u.id};profile=u;
+ lsSet(LS_SESSION,{uid:u.id});
+ startApp();
+ $('btnLogin').disabled=false;
+}
+function doLogout(){
+ lsSet(LS_SESSION,null);
+ user=null;profile=null;
+ show('loginView');
+ $('lPass').value='';
+}
+
+/* ---------- app start ---------- */
+function startApp(){
+ show('appView');
+ $('who').textContent=(profile.name||profile.username)+' ('+profile.role+')';
+ document.querySelectorAll('.admin-only').forEach(el=>el.style.display=isAdmin()?'':'none');
+ document.querySelectorAll('.navbtn[data-page]').forEach(b=>{if(!isAdmin()&&!STAFF_ALLOWED.includes(b.dataset.page))b.style.display='none';else b.style.display='';});
+ goPage(isAdmin()?'dashboard':'sale');
+ clearSale();
+ staff=getUsers();
+ renderAll();
+}
+function updateNet(){const el=$('netState');if(el)el.textContent=navigator.onLine?'🟢 Online':'🔴 Offline';}
+
+function goPage(p){
+ if(!isAdmin()&&!STAFF_ALLOWED.includes(p))return;
+ document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===p));
+ document.querySelectorAll('.navbtn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
+ scrollTo(0,0);
+ const pb=document.querySelector('.navbtn[data-page="'+p+'"]'),pn=$('pageName');if(pn)pn.textContent=pb?pb.textContent+' • ':'';
+}
+
+/* ---------- print ---------- */
+let invoicePrintOriginal={width:'',zoom:'',maxWidth:'',padding:''};
+function printInvoiceOnePage(){
+ const el=$('invoiceContent');if(!el){window.print();return;}
+ invoicePrintOriginal={width:el.style.width,zoom:el.style.zoom,maxWidth:el.style.maxWidth,padding:el.style.padding};
+ el.style.width='196mm';el.style.maxWidth='196mm';el.style.padding='0';el.style.zoom='1';
+ void el.offsetHeight;
+ const heightPx=Math.max(el.scrollHeight,el.getBoundingClientRect().height);
+ const scale=Math.min(1,1068/Math.max(1,heightPx));
+ el.style.zoom=String(Math.max(0.35,scale));
+ requestAnimationFrame(()=>{window.print();});
+}
+window.addEventListener('afterprint',()=>{
+ const el=$('invoiceContent');if(!el)return;
+ el.style.width=invoicePrintOriginal.width;el.style.zoom=invoicePrintOriginal.zoom;
+ el.style.maxWidth=invoicePrintOriginal.maxWidth;el.style.padding=invoicePrintOriginal.padding;
+});
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+ const mn=$('mainNav');
+ if(mn&&!e.target.closest('#mainNav,#menuBtn'))mn.classList.remove('open');
+ const nb=e.target.closest('[data-page]');if(nb){goPage(nb.dataset.page);if(mn)mn.classList.remove('open');return;}
+ if(e.target.closest('[data-act="toggleMenu"]')){mn.classList.toggle('open');return;}
+ const b=e.target.closest('[data-act]');if(!b)return;
+ const a=b.dataset.act,id=b.dataset.id;
+ if(a==='logout')doLogout();
+ else if(a==='viewInv'){const s=gsales.find(x=>x.id===id);if(s)openInvoice(s);}
+ else if(a==='voidInv')voidSale(id);
+ else if(a==='print')printInvoiceOnePage();
+ else if(a==='closeInvoice')$('invoiceModal').classList.remove('show');
+ else if(a==='clearSale')clearSale();
+ else if(a==='export')exportBackup();
+ else if(a==='import')$('importFile').click();
+ else if(a==='addLine'){gCart.push(newLine());renderCart();}
+ else if(a==='rmLine'){gCart.splice(Number(id),1);if(!gCart.length)gCart=[newLine()];renderCart();}
+ else if(a==='receivePay')receivePay(id);
+ else if(a==='editInv')startEdit(id);
+ else if(a==='cancelEdit')clearSale();
+ else if(a==='delStaff')deleteStaff(id);
+});
+$('btnLogin').addEventListener('click',doLogin);
+$('btnSale').addEventListener('click',completeSale);
+$('btnAddStaff').addEventListener('click',addStaff);
+['lEmail','lPass'].forEach(i=>$(i).addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();}));
+['sDisc','sExtra'].forEach(i=>$(i).addEventListener('input',updateTotals));
+$('sPaid').addEventListener('input',()=>{paidTouched=true;updateTotals();});
+$('sBill').addEventListener('change',()=>{paidTouched=false;updateTotals();});
+$('invSearch').addEventListener('input',renderInvoices);
+$('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(f)importBackup(f);e.target.value='';});
+document.addEventListener('change',e=>{
+ const r=e.target.closest('[data-role-uid]');
+ if(r)changeRole(r.dataset.roleUid,r.value);
+});
+
+/* ---------- render ---------- */
+function renderAll(){renderDashboard();renderInvoices();renderDues();renderCart();if(isAdmin())renderStaff();}
+const okSales=()=>gsales.filter(s=>s.status!=='void');
+const invNum=v=>{const m=String(v||'').match(/(\d+)$/);return m?parseInt(m[1],10):0;};
+
+function words(n){
+ n=Math.round(Number(n)||0);if(n<=0)return 'Zero Only';
+ const a=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+ const b=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+ const two=x=>x<20?a[x]:b[Math.floor(x/10)]+(x%10?'-'+a[x%10]:'');
+ const three=x=>(x>=100?a[Math.floor(x/100)]+' Hundred'+(x%100?' ':''):'')+(x%100?two(x%100):'');
+ const p=[];const cr=Math.floor(n/1e7);n%=1e7;const lk=Math.floor(n/1e5);n%=1e5;const th=Math.floor(n/1e3);n%=1e3;
+ if(cr)p.push(three(cr)+' Crore');if(lk)p.push(three(lk)+' Lakh');if(th)p.push(three(th)+' Thousand');if(n)p.push(three(n));
+ return p.join(' ')+' Only';
+}
+function warrantyLabel(m){m=Number(m||0);if(!m)return 'No Warranty';return m%12===0?(m/12)+' Year'+(m/12>1?'s':''):m+' Month'+(m>1?'s':'');}
+function norm(s){if(s.lines)return s;return {...s,lines:[{product:s.product||'',qty:1,unitPrice:Number(s.price||0),amount:Number(s.price||0),warrantyMonths:0}],subtotal:Number(s.price||0),discount:0,extra:0,net:Number(s.price||0),paid:Number(s.paid||0),due:0,totalQty:1,legacy:true};}
+const lineSummary=s=>s.lines.map(l=>l.product+(l.qty>1?' ×'+l.qty:'')).join(', ');
+
+function renderDashboard(){
+ const ok=okSales(),total=ok.reduce((a,s)=>a+Number(s.net||0),0),qty=ok.reduce((a,s)=>a+Number(s.totalQty||0),0),due=ok.reduce((a,s)=>a+Number(s.due||0),0);
+ $('dInvoices').textContent=ok.length;$('dQty').textContent=qty;$('dSales').textContent=money(total);$('dDue').textContent=money(due);
+ if(isAdmin())$('adminStats').innerHTML='মোট বিক্রি: <b>'+money(total)+'</b> &nbsp;•&nbsp; মোট বাকি: <b>'+money(due)+'</b>';
+ $('recentSales').innerHTML=ok.length?'<table><tbody>'+ok.slice(0,8).map(s=>'<tr><td>'+esc(s.invoice)+'</td><td>'+esc(lineSummary(s))+'</td><td>'+money(s.net)+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">এখনও কোনো বিক্রি নেই</div>';
+ const openDues=ok.filter(s=>Number(s.due)>0.0001);
+ $('dueList').innerHTML=openDues.length?'<table><tbody>'+openDues.slice(0,8).map(s=>'<tr><td>'+esc(s.customer&&s.customer.name)+'</td><td style="color:#c62828">'+money(s.due)+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">কোনো বাকি নেই</div>';
+}
+
+/* ---------- cart ---------- */
+const newLine=()=>({name:'',qty:'1',price:'',wm:'0'});
+let gCart=[newLine()],paidTouched=false,editing=null;
+function renderCart(){
+ $('cartBody').innerHTML=gCart.length?gCart.map((l,i)=>'<tr><td>'+(i+1)+'</td><td><input data-li="'+i+'" data-f="name" placeholder="পণ্যের নাম" value="'+esc(l.name)+'"></td><td><input data-li="'+i+'" data-f="wm" type="number" min="0" style="width:80px" value="'+esc(l.wm)+'"></td><td><input data-li="'+i+'" data-f="qty" type="number" min="1" style="width:70px" value="'+esc(l.qty)+'"></td><td><input data-li="'+i+'" data-f="price" type="number" min="0" style="width:110px" value="'+esc(l.price)+'"></td><td data-amt="'+i+'">'+money((Number(l.qty)||0)*(Number(l.price)||0))+'</td><td><button class="danger" data-act="rmLine" data-id="'+i+'">✕</button></td></tr>').join(''):'<tr><td colspan="7" class="empty">Cart খালি — উপরে পণ্য যোগ করুন</td></tr>';
+ updateTotals();
+}
+function calc(){
+ const sub=gCart.reduce((a,l)=>a+(Number(l.qty)||0)*(Number(l.price)||0),0);
+ const disc=Math.max(0,Number($('sDisc').value)||0),extra=Math.max(0,Number($('sExtra').value)||0);
+ const net=Math.max(0,sub-disc+extra);
+ if(!paidTouched)$('sPaid').value=$('sBill').value==='Cash'?net:0;
+ const paid=Math.max(0,Number($('sPaid').value)||0);
+ return {sub,disc,extra,net,paid,due:net-paid,qty:gCart.reduce((a,l)=>a+(Number(l.qty)||0),0)};
+}
+function updateTotals(){
+ const c=calc();
+ $('sTotals').innerHTML='<table><tbody><tr><td>Total Qty</td><td style="text-align:right"><b>'+c.qty+'</b></td></tr><tr><td>Total Amount</td><td style="text-align:right">'+money(c.sub)+'</td></tr><tr><td>Less Discount</td><td style="text-align:right">'+money(c.disc)+'</td></tr><tr><td>Add Extra Charges</td><td style="text-align:right">'+money(c.extra)+'</td></tr><tr><td><b>Net Payable</b></td><td style="text-align:right"><b>'+money(c.net)+'</b></td></tr><tr><td>Paid</td><td style="text-align:right">'+money(c.paid)+'</td></tr><tr><td><b>Due (বাকি)</b></td><td style="text-align:right;color:'+(c.due>0?'#c62828':'#1b7f3b')+'"><b>'+money(c.due)+'</b></td></tr></tbody></table><div class="small" style="margin-top:6px">'+esc(words(c.net))+'</div>';
+}
+function clearSale(){
+ gCart=[newLine()];paidTouched=false;editing=null;setEditUI();
+ ['cName','cPhone','cAddress','sRef','sPayDate','sNarr','sDisc','sExtra','sPaid'].forEach(i=>$(i).value='');
+ $('sBill').value='Cash';$('sPay').value='Cash';$('sPerson').value=(profile&&profile.name)||'';
+ renderCart();
+}
+document.addEventListener('input',e=>{
+ const t=e.target,li=t.dataset&&t.dataset.li;
+ if(li!==undefined&&li!==''){const i=Number(li);gCart[i][t.dataset.f]=t.value;if(t.dataset.f==='qty'||t.dataset.f==='price'){const cell=document.querySelector('[data-amt="'+i+'"]');if(cell)cell.textContent=money((Number(gCart[i].qty)||0)*(Number(gCart[i].price)||0));}updateTotals();}
+});
+
+/* ---------- complete sale ---------- */
+function completeSale(){
+ const valid=gCart.filter(l=>l.name.trim()&&Number(l.qty)>0&&Number(l.price)>0);
+ if(!valid.length)return toast('কমপক্ষে একটি পণ্যের নাম, পরিমাণ ও দাম দিন।');
+ const name=$('cName').value.trim(),phone=$('cPhone').value.trim(),address=$('cAddress').value.trim();
+ const c=calc(),bill=$('sBill').value,method=$('sPay').value;
+ if(!name)return toast('Customer name দিন।');
+ if(c.due>0&&!phone)return toast('বাকি থাকলে Customer-এর mobile নম্বর দিন।');
+ if(!(c.net>0))return toast('Net Payable ০-এর বেশি হতে হবে।');
+ if(c.paid>c.net)return toast('Paid, Net Payable-এর বেশি হতে পারে না।');
+ if(editing)return saveInvoiceEdit(c,bill,method,name,phone,address);
+ const now=new Date(),iso=now.toISOString();
+ const n=getCounter()+1,inv=SHOP.prefix+now.getFullYear()+'-'+String(n).padStart(6,'0');
+ if(gsales.find(s=>s.id===inv))return toast('Invoice নম্বর সংঘাত — আবার চেষ্টা করুন।');
+ const meta={refNo:$('sRef').value.trim(),payDate:$('sPayDate').value||null,narration:$('sNarr').value.trim(),salesPerson:$('sPerson').value.trim()||(profile.name||profile.username)};
+ const lines=valid.map(l=>({product:l.name.trim(),qty:Number(l.qty),unitPrice:Number(l.price),amount:Number(l.qty)*Number(l.price),warrantyMonths:Number(l.wm||0),warrantyEnd:Number(l.wm)>0?addMonths(now,Number(l.wm)).toISOString():null}));
+ const s={id:inv,invoice:inv,date:iso,customer:{name,phone,address},lines,totalQty:valid.reduce((a,l)=>a+Number(l.qty),0),subtotal:c.sub,discount:c.disc,extra:c.extra,net:c.net,paid:c.paid,due:c.due,billType:bill,payment:method,salesPerson:meta.salesPerson,preparedBy:profile.name||profile.username,refNo:meta.refNo,payDate:meta.payDate,narration:meta.narration,status:'ok',soldBy:profile.name||profile.username,soldByUid:user.uid,payments:c.paid>0?[{date:iso,amount:c.paid,method,by:profile.name||profile.username}]:[]};
+ gsales.unshift(s);setCounter(n);saveSales();
+ clearSale();renderAll();openInvoice(s);
+}
+
+/* ---------- edit ---------- */
+function setEditUI(){
+ const b=$('editBanner');if(!b)return;
+ if(editing){
+  b.style.display='block';
+  b.innerHTML='<b>✏️ Invoice '+esc(editing.invoice)+' সম্পাদনা হচ্ছে</b> <button class="muted" data-act="cancelEdit" style="margin-left:8px">বাতিল করুন</button>';
+  $('btnSale').textContent='✅ Invoice আপডেট করুন';$('saleTitle').textContent='✏️ Invoice Edit';
+ }else{
+  b.style.display='none';b.innerHTML='';
+  $('btnSale').textContent='Invoice তৈরি করুন';$('saleTitle').textContent='🛒 New Sale / Invoice (General)';
+ }
+}
+function startEdit(id){
+ const s=gsales.find(x=>x.id===id);if(!s)return;
+ if(s.status==='void')return toast('বাতিল invoice সম্পাদনা করা যায় না।');
+ if(!isAdmin())return toast('শুধু Admin invoice সম্পাদনা করতে পারবে।');
+ clearSale();editing=s;
+ gCart=s.lines.map(l=>({name:l.product,qty:String(l.qty),price:String(l.unitPrice),wm:String(l.warrantyMonths||0)}));
+ if(!gCart.length)gCart=[newLine()];
+ const c=s.customer||{};
+ $('cName').value=c.name||'';$('cPhone').value=c.phone||'';$('cAddress').value=c.address||'';
+ $('sBill').value=s.billType==='Due'?'Due':'Cash';
+ $('sPay').value=[...$('sPay').options].some(o=>o.value===s.payment)?s.payment:'Cash';
+ $('sPerson').value=s.salesPerson||'';$('sRef').value=s.refNo||'';$('sPayDate').value=s.payDate||'';$('sNarr').value=s.narration||'';
+ $('sDisc').value=s.discount||'';$('sExtra').value=s.extra||'';
+ paidTouched=true;$('sPaid').value=s.paid;
+ setEditUI();renderCart();goPage('sale');
+}
+function saveInvoiceEdit(c,bill,method,name,phone,address){
+ const ed=editing;
+ const valid=gCart.filter(l=>l.name.trim()&&Number(l.qty)>0&&Number(l.price)>0);
+ if(!valid.length)return toast('কমপক্ষে একটি পণ্য রাখুন।');
+ const now=new Date(),iso=now.toISOString();
+ const idx=gsales.findIndex(x=>x.id===ed.id);
+ if(idx<0)return toast('Invoice খুঁজে পাওয়া যায়নি।');
+ const cur=norm(gsales[idx]);
+ if(cur.status==='void')return toast('এই invoice বাতিল।');
+ const meta={refNo:$('sRef').value.trim(),payDate:$('sPayDate').value||null,narration:$('sNarr').value.trim(),salesPerson:$('sPerson').value.trim()||(profile.name||profile.username)};
+ const lines=valid.map(l=>({product:l.name.trim(),qty:Number(l.qty),unitPrice:Number(l.price),amount:Number(l.qty)*Number(l.price),warrantyMonths:Number(l.wm||0),warrantyEnd:Number(l.wm)>0?addMonths(cur.date,Number(l.wm)).toISOString():null}));
+ const by=profile.name||profile.username,diff=c.paid-Number(cur.paid||0);
+ const payments=(cur.payments||[]).slice();
+ if(diff>0.0001)payments.push({date:iso,amount:diff,method:'Edit',by});
+ if(diff<-0.0001)payments.push({date:iso,amount:diff,method:'Refund',by});
+ const edits=[...(cur.edits||[]),{date:iso,by,summary:'Net '+num(cur.net)+' → '+num(c.net)}].slice(-50);
+ const upd={...cur,customer:{name,phone,address},lines,totalQty:valid.reduce((a,l)=>a+Number(l.qty),0),subtotal:c.sub,discount:c.disc,extra:c.extra,net:c.net,paid:c.paid,due:c.net-c.paid,billType:bill,payment:method,salesPerson:meta.salesPerson,refNo:meta.refNo,payDate:meta.payDate,narration:meta.narration,payments,edits,editCount:(cur.editCount||0)+1,updatedAt:iso};
+ gsales[idx]=upd;saveSales();
+ clearSale();renderAll();openInvoice(upd);toast('Invoice আপডেট হয়েছে।');
+}
+
+/* ---------- invoices list ---------- */
+function renderInvoices(){
+ const q=nkey($('invSearch').value);
+ const list=gsales.filter(s=>!q||[s.invoice,s.customer&&s.customer.name,s.customer&&s.customer.phone,lineSummary(s)].some(x=>nkey(x).includes(q))).slice(0,300);
+ $('invTable').innerHTML=list.length?list.map(s=>'<tr'+(s.status==='void'?' style="opacity:.55"':'')+'><td>'+esc(s.invoice)+(s.status==='void'?' <span class="badge sold">VOID</span>':'')+'</td><td>'+fmtDT(s.date)+'</td><td>'+esc(s.customer&&s.customer.name)+'<br><span class="small">'+esc(s.customer&&s.customer.phone)+'</span></td><td>'+esc(lineSummary(s))+'</td><td>'+s.totalQty+'</td><td>'+money(s.net)+'</td><td>'+(Number(s.due)>0.0001?'<span style="color:#c62828">বাকি '+money(s.due)+'</span>':'<span style="color:#1b7f3b">Paid</span>')+'</td><td style="white-space:nowrap"><button class="primary" data-act="viewInv" data-id="'+esc(s.id)+'">View</button>'+(isAdmin()&&s.status!=='void'?' <button class="warning" data-act="editInv" data-id="'+esc(s.id)+'">Edit</button>':'')+(isAdmin()&&s.status!=='void'?' <button class="danger" data-act="voidInv" data-id="'+esc(s.id)+'">Void</button>':'')+'</td></tr>').join(''):'<tr><td colspan="8" class="empty">কোনো invoice নেই</td></tr>';
+}
+function renderDues(){
+ const open=okSales().filter(s=>Number(s.due)>0.0001);
+ const by={};
+ open.forEach(s=>{const c=s.customer||{};const k=c.phone||c.name||'?';const o=by[k]=by[k]||{name:c.name,phone:c.phone,due:0,n:0};o.due+=Number(s.due);o.n++;});
+ const tot=open.reduce((a,s)=>a+Number(s.due),0);
+ $('dueTotal').innerHTML='মোট বাকি: <b style="color:#c62828">'+money(tot)+'</b> ('+open.length+'টি invoice, '+Object.keys(by).length+' জন customer)';
+ $('dueSummary').innerHTML=Object.values(by).sort((a,b)=>b.due-a.due).map(o=>'<tr><td>'+esc(o.name)+'</td><td>'+esc(o.phone)+'</td><td>'+o.n+'</td><td style="color:#c62828"><b>'+money(o.due)+'</b></td></tr>').join('')||'<tr><td colspan="4" class="empty">কোনো বাকি নেই</td></tr>';
+ $('dueTable').innerHTML=open.map(s=>'<tr><td>'+esc(s.invoice)+'</td><td>'+fmtD(s.date)+'</td><td>'+esc(s.customer&&s.customer.name)+'<br><span class="small">'+esc(s.customer&&s.customer.phone)+'</span></td><td>'+money(s.net)+'</td><td>'+money(s.paid)+'</td><td style="color:#c62828"><b>'+money(s.due)+'</b></td><td style="white-space:nowrap"><button class="success" data-act="receivePay" data-id="'+esc(s.id)+'">পেমেন্ট নিন</button> <button class="muted" data-act="viewInv" data-id="'+esc(s.id)+'">View</button></td></tr>').join('')||'<tr><td colspan="7" class="empty">কোনো বাকি নেই</td></tr>';
+}
+function receivePay(id){
+ if(!isAdmin())return toast('শুধু Admin পেমেন্ট জমা নিতে পারবে।');
+ const s=gsales.find(x=>x.id===id);if(!s)return;
+ const a=prompt('Invoice '+s.invoice+' — কত টাকা পেলেন? (বাকি '+money(s.due)+')');
+ if(a===null)return;const amt=Number(a);
+ if(!(amt>0)||amt>Number(s.due)+0.001)return toast('টাকার অঙ্ক সঠিক নয়।');
+ const idx=gsales.findIndex(x=>x.id===id);
+ const cur=gsales[idx];if(cur.status==='void')return toast('এই invoice বাতিল।');
+ if(amt>Number(cur.due)+0.001)return toast('বাকির চেয়ে বেশি দেওয়া যায় না।');
+ const paid=Number(cur.paid)+amt,due=Math.max(0,Number(cur.net)-paid);
+ cur.paid=paid;cur.due=due;
+ cur.payments=[...(cur.payments||[]),{date:new Date().toISOString(),amount:amt,method:'Cash',by:profile.name||profile.username}];
+ saveSales();renderAll();toast('পেমেন্ট জমা হয়েছে।');
+}
+
+/* ---------- invoice view ---------- */
+const ICON={
+ phone:'<path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/>',
+ whatsapp:'<path d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89A11.82 11.82 0 0 0 12.05 0zm0 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>',
+ mail:'<path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/>',
+ facebook:'<path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/>'
+};
+const icon=p=>'<svg class="inv-ico" viewBox="0 0 24 24" aria-hidden="true">'+ICON[p]+'</svg>';
+function contactHtml(){
+ const phones=SHOP.phones.map(p=>'<span class="inv-c">'+icon('phone')+esc(p)+'<a href="https://wa.me/88'+esc(p)+'" class="inv-c" style="color:inherit;text-decoration:none">'+icon('whatsapp')+'</a></span>');
+ const items=[...phones,'<span class="inv-c">'+icon('mail')+esc(SHOP.email)+'</span>','<span class="inv-c">'+icon('facebook')+esc(SHOP.facebook)+'</span>'];
+ return '<div class="inv-contacts">'+items.join('')+'</div>';
+}
+function openInvoice(s0){
+ const s=norm(s0),c=s.customer||{},now=new Date();
+ const rows=s.lines.map((l,i)=>'<tr><td>'+(i+1)+'</td><td><strong>'+esc(l.product)+'</strong></td><td>'+warrantyLabel(Number(l.warrantyMonths||0))+(l.warrantyEnd?'<div class="small">Valid till '+fmtD(l.warrantyEnd)+'</div>':'')+'</td><td>'+l.qty+'</td><td>'+num(l.unitPrice)+'</td><td>'+num(l.amount)+'</td></tr>').join('');
+ $('invoiceContent').innerHTML=(LOGO?'<img src="'+LOGO+'" class="invoice-watermark" alt="">':'')+
+ '<div class="invoice-content-layer">'+
+ '<div class="invoice-head"><h1>'+esc(SHOP.name)+'</h1><div>'+esc(SHOP.address)+'</div>'+contactHtml()+'<h2>SALES INVOICE'+(s.status==='void'?' (VOID)':'')+'</h2></div>'+
+ '<div class="invoice-meta"><div><b>Customer:</b> '+esc(c.name)+'<br><b>Address:</b> '+esc(c.address||'')+'<br><b>Mobile:</b> '+esc(c.phone||'')+'<br><b>Sales Person:</b> '+esc(s.salesPerson||'')+'</div>'+
+ '<div><b>Invoice No:</b> '+esc(s.invoice)+'<br><b>Date:</b> '+fmtD(s.date)+'<br><b>Bill Type:</b> '+esc((s.billType||'Cash').toUpperCase())+'<br><b>Ref No:</b> '+esc(s.refNo||'')+'<br><b>Payment Date:</b> '+(s.payDate?fmtD(s.payDate):'')+'<br><b>Prepared By:</b> '+esc(s.preparedBy||'')+'<br><b>Entry Time:</b> '+fmtDT(s.date)+'</div></div>'+
+ '<table class="invoice-items"><colgroup><col style="width:7%"><col style="width:41%"><col style="width:18%"><col style="width:9%"><col style="width:12%"><col style="width:13%"></colgroup><thead><tr><th>SL</th><th>Product Description</th><th>Warranty</th><th>Qty</th><th>Unit Price</th><th>Amount</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+ '<div class="invoice-summary"><div class="summary-left"><div><b>Total Qty:</b> '+s.totalQty+'</div><div><b>Taka in word:</b> '+esc(words(s.net))+'</div><div><b>Narration:</b> '+esc(s.narration||'—')+'</div></div>'+
+ '<table class="summary-right"><tbody><tr><td>Total Amount</td><td style="text-align:right">'+num(s.subtotal)+'</td></tr><tr><td>Less Discount</td><td style="text-align:right">'+num(s.discount)+'</td></tr><tr><td>Add Extra Charges</td><td style="text-align:right">'+num(s.extra)+'</td></tr><tr><td><b>Net Payable Amount</b></td><td style="text-align:right"><b>'+num(s.net)+'</b></td></tr><tr><td>Paid Amount</td><td style="text-align:right">'+num(s.paid)+'</td></tr><tr><td><b>Due Amount</b></td><td style="text-align:right"><b>'+num(s.due)+'</b></td></tr></tbody></table></div>'+
+ '<div class="signs"><span>Customer Signature<br>________________________</span><span>Authorised Signature<br>________________________</span></div>'+
+ '<div class="small" style="margin-top:5mm">Print Date &amp; Time: '+fmtDT(now)+'</div>'+
+ (SHOP.note?'<div class="small" style="margin-top:2mm">Note: '+esc(SHOP.note)+'</div>':'')+(s.editCount?'<div class="small" style="margin-top:2mm">Revised invoice — last updated: '+fmtDT(s.updatedAt||s.date)+'</div>':'')+'</div>';
+ $('invHistory').innerHTML=(s.edits&&s.edits.length)?'<b>সম্পাদনার ইতিহাস:</b><br>'+s.edits.map(h=>fmtDT(h.date)+' — '+esc(h.by)+': '+esc(h.summary)).join('<br>'):'';
+ $('invoiceModal').classList.add('show');
+}
+function voidSale(id){
+ const s=gsales.find(x=>x.id===id);if(!s)return;
+ const reason=prompt('Invoice '+s.invoice+' বাতিল (void) করবেন? কারণ লিখুন:');
+ if(reason===null)return;
+ const idx=gsales.findIndex(x=>x.id===id);
+ if(idx<0||gsales[idx].status==='void')return toast('আগেই void করা হয়েছে বা পাওয়া যায়নি।');
+ gsales[idx].status='void';gsales[idx].voidedAt=new Date().toISOString();gsales[idx].voidedBy=profile.name||profile.username;gsales[idx].voidReason=reason;
+ saveSales();renderAll();toast('Invoice void হয়েছে।');
+}
+
+/* ---------- staff ---------- */
+function renderStaff(){
+ if(!isAdmin())return;
+ const users=getUsers();
+ $('staffTable').innerHTML=users.length?users.map(u=>'<tr><td>'+esc(u.name||'')+'</td><td>'+esc(u.username||'')+'</td><td>'+(u.id===user.uid?esc(u.role)+' (আপনি)':'<select data-role-uid="'+esc(u.id)+'"><option value="admin"'+(u.role==='admin'?' selected':'')+'>admin</option><option value="staff"'+(u.role==='staff'?' selected':'')+'>staff</option><option value="disabled"'+(u.role==='disabled'?' selected':'')+'>disabled</option></select>')+'</td><td>'+(u.id!==user.uid?'<button class="danger" data-act="delStaff" data-id="'+esc(u.id)+'">Delete</button>':'')+'</td></tr>').join(''):'<tr><td colspan="4" class="empty">কেউ নেই</td></tr>';
+}
+function changeRole(uid,role){
+ if(!isAdmin())return toast('শুধু Admin role বদলাতে পারবে।');
+ const users=getUsers(),u=users.find(x=>x.id===uid);
+ if(u){u.role=role;saveUsers(users);staff=users;renderStaff();toast('Role বদলানো হয়েছে।');}
+}
+function deleteStaff(uid){
+ if(!isAdmin())return toast('শুধু Admin এটা করতে পারবে।');
+ if(uid===user.uid)return toast('নিজের অ্যাকাউন্ট মুছবেন না।');
+ if(!confirm('এই staff account মুছে ফেলবেন?'))return;
+ let users=getUsers().filter(x=>x.id!==uid);
+ saveUsers(users);staff=users;renderStaff();toast('Account মুছে ফেলা হয়েছে।');
+}
+function addStaff(){
+ if(!isAdmin())return toast('শুধু Admin নতুন user যোগ করতে পারবে।');
+ const name=$('stName').value.trim(),email=$('stEmail').value.trim(),pw=$('stPass').value,role=$('stRole').value;
+ if(!name||!email||pw.length<6)return toast('Name, Username ও কমপক্ষে ৬ অক্ষরের Password দিন।');
+ const users=getUsers();
+ if(users.find(u=>u.username===email))return toast('এই Username-এ আগেই account আছে।');
+ users.push({id:'u'+Date.now(),name,username:email,password:pw,role,createdAt:new Date().toISOString()});
+ saveUsers(users);staff=users;renderStaff();
+ ['stName','stEmail','stPass'].forEach(i=>$(i).value='');
+ toast('Account তৈরি হয়েছে।');
+}
+
+/* ---------- backup / restore ---------- */
+function exportBackup(){
+ const counter=getCounter();
+ const payload={app:'artcomputer_general',version:2,exportedAt:new Date().toISOString(),invoiceNo:counter,gsales,users:getUsers()};
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,1)],{type:'application/json'}));
+ a.download='arts-general-backup-'+new Date().toISOString().slice(0,10)+'.json';
+ document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+ toast('Backup ফাইল নামানো হয়েছে।');
+}
+function importBackup(file){
+ const reader=new FileReader();
+ reader.onload=()=>{
+  let p;try{p=JSON.parse(reader.result);}catch(e){return toast('ফাইলটি সঠিক JSON নয়।');}
+  const d=p&&p.data?p.data:p;
+  if(!d||!Array.isArray(d.gsales))return toast('এটি General Sale Backup ফাইল নয়।');
+  if(!confirm('Backup-এ '+d.gsales.length+' sale আছে। চালিয়ে যাবেন?'))return;
+  const imported=d.gsales.map(s=>{
+   const {id,...r}=s;
+   return {...r,id:s.invoice||('imp'+Date.now()+Math.random().toString(36).slice(2,6)),invoice:s.invoice||('IMP'+Date.now()),status:r.status==='void'?'void':'ok',customer:r.customer||{name:'',phone:'',address:''}};
+  });
+  const existing=new Map(gsales.map(s=>[s.id,s]));
+  imported.forEach(s=>existing.set(s.id,s));
+  gsales=Array.from(existing.values());
+  gsales.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  saveSales();
+  const maxInv=d.gsales.reduce((a,s)=>Math.max(a,invNum(s.invoice)||0),0);
+  setCounter(Math.max(getCounter(),Number(d.invoiceNo||0),maxInv));
+  if(d.users&&Array.isArray(d.users)&&isAdmin()){saveUsers(d.users);staff=d.users;renderStaff();}
+  renderAll();toast('Restore সম্পন্ন হয়েছে।');
+ };
+ reader.readAsText(file);
+}
+
+/* ---------- init ---------- */
+ensureUsers();
+loadSales();
+updateNet();
+addEventListener('online',updateNet);addEventListener('offline',updateNet);
+if(checkSession()){startApp();}else{show('loginView');}
+</script>
+</body>
+</html>
