@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>হিলফুল ফুজুল ফাউন্ডেশন নাটোর — মানবতার সেবায় একসাথে</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF7;
+  --surface:#FFFFFF;
+  --ink:#1A2E1A;
+  --ink-soft:#3D4F3D;
+  --muted:#6B7B6B;
+  --line:#E5E8E2;
+  --primary:#16502E;
+  --primary-light:#1E6B3E;
+  --primary-dark:#0E3A1E;
+  --accent:#C9E5CA;
+  --accent-soft:#EBF5EC;
+  --gold:#D4A937;
+  --warm:#F8F6F1;
+  --radius-sm:12px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --radius-xl:32px;
+  --radius-pill:9999px;
+  --shadow-1:#0000000D 0px 1px 2px 0px;
+  --shadow-2:#0000001A 0px 4px 6px -1px;
+  --shadow-3:#0000001A 0px 2px 4px -2px;
+  --shadow-green:#16502E33 0px 10px 15px -3px;
+  --shadow-green-sm:#16502E33 0px 4px 6px -4px;
+  --max-w:1152px;
+  --max-w-narrow:768px;
+  --max-w-text:672px;
+  --font-bn:'Hind Siliguri',system-ui,sans-serif;
+  --font-en:'Inter',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-bn);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.container-narrow{max-width:var(--max-w-narrow);margin:0 auto;padding:0 24px}
+
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:#FFFFFFCC;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .3s ease;
+}
+.site-header.scrolled{box-shadow:var(--shadow-2)}
+.header-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 24px;gap:20px;
+}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--primary)}
+.logo-mark{
+  width:36px;height:36px;border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:18px;
+}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{
+  padding:8px 16px;border-radius:var(--radius-pill);
+  font-weight:500;font-size:15px;color:var(--ink-soft);
+  transition:background .2s ease,color .2s ease;
+}
+.nav-link:hover,.nav-link.active{background:var(--accent-soft);color:var(--primary)}
+.nav-toggle{display:none;width:40px;height:40px;border-radius:var(--radius-sm);align-items:center;justify-content:center;font-size:22px;color:var(--primary)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:var(--radius-pill);
+  font-weight:600;font-size:15px;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow-green-sm)}
+.btn-primary:hover{background:var(--primary-light);box-shadow:var(--shadow-green)}
+.btn-outline{border:1.5px solid var(--primary);color:var(--primary);background:transparent}
+.btn-outline:hover{background:var(--accent-soft)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#BF9829}
+.btn-ghost{color:var(--primary);background:var(--accent-soft)}
+.btn-ghost:hover{background:var(--accent)}
+
+.hero{
+  position:relative;min-height:90vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(14,58,30,.55) 0%,rgba(14,58,30,.35) 50%,rgba(14,58,30,.65) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:var(--max-w);margin:0 auto;
+  padding:60px 24px;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#FFFFFF22;backdrop-filter:blur(8px);
+  border:1px solid #FFFFFF33;
+  padding:6px 16px;border-radius:var(--radius-pill);
+  color:#fff;font-size:14px;font-weight:500;margin-bottom:20px;
+}
+.hero h1{
+  color:#fff;font-size:clamp(32px,6vw,56px);
+  font-weight:700;line-height:1.2;max-width:700px;
+  margin-bottom:16px;
+}
+.hero p{
+  color:#FFFFFFDD;font-size:clamp(16px,2.5vw,20px);
+  max-width:560px;margin-bottom:32px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.section{padding:80px 0}
+.section-tight{padding:56px 0}
+.section-warm{background:var(--warm)}
+.section-green-soft{background:#F8F6F166}
+.section-mint{background:#EBF9F066}
+.section-head{text-align:center;max-width:var(--max-w-text);margin:0 auto 48px}
+.section-head h2{
+  font-size:clamp(26px,4vw,40px);font-weight:700;
+  color:var(--ink);line-height:1.25;margin-bottom:12px;
+}
+.section-head p{color:var(--muted);font-size:17px}
+
+.about-strip{display:flex;gap:0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-2)}
+.about-strip-img{flex:1;min-height:380px;background-size:cover;background-position:center}
+.about-strip-body{flex:1;padding:48px;display:flex;flex-direction:column;justify-content:center;background:var(--surface)}
+.about-strip-body .eyebrow{color:var(--primary);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.about-strip-body h3{font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.3;margin-bottom:16px}
+.about-strip-body p{color:var(--ink-soft);font-size:17px;margin-bottom:24px}
+
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.value-card{
+  background:var(--surface);border-radius:var(--radius-lg);
+  padding:32px 24px;box-shadow:var(--shadow-1);
+  transition:transform .25s ease,box-shadow .25s ease;
+  border:1px solid var(--line);
+}
+.value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-green)}
+.value-icon{
+  width:56px;height:56px;border-radius:var(--radius-md);
+  background:var(--accent-soft);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin-bottom:20px;
+}
+.value-card h3{font-size:20px;font-weight:600;margin-bottom:10px}
+.value-card p{color:var(--muted);font-size:15px}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.project-card{
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:var(--surface);box-shadow:var(--shadow-1);
+  transition:transform .25s ease,box-shadow .25s ease;
+  border:1px solid var(--line);
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-green)}
+.project-img{width:100%;height:240px;object-fit:cover}
+.project-body{padding:24px}
+.project-body h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.project-body p{color:var(--muted);font-size:14px;margin-bottom:16px}
+
+.health-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.health-img{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-2)}
+.health-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.health-text h3{font-size:clamp(22px,3vw,32px);font-weight:700;margin-bottom:16px;line-height:1.3}
+.health-text p{color:var(--ink-soft);font-size:16px;margin-bottom:24px}
+
+.blood-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}
+.blood-card{
+  background:var(--surface);border-radius:var(--radius-lg);
+  padding:32px 24px;text-align:center;box-shadow:var(--shadow-1);
+  border:1px solid var(--line);transition:transform .25s ease,box-shadow .25s ease;
+}
+.blood-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-green)}
+.blood-drop{
+  width:64px;height:64px;margin:0 auto 16px;
+  background:linear-gradient(135deg,#E63946,#C1121F);
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:24px;font-weight:700;
+}
+
+.involve-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.involve-card{
+  background:var(--surface);border-radius:var(--radius-lg);
+  padding:32px 20px;text-align:center;box-shadow:var(--shadow-1);
+  border:1px solid var(--line);transition:transform .25s ease,box-shadow .25s ease;
+}
+.involve-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-green)}
+.involve-icon{
+  width:52px;height:52px;margin:0 auto 16px;
+  border-radius:var(--radius-md);background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:var(--primary);
+}
+.involve-card h3{font-size:17px;font-weight:600;margin-bottom:8px}
+.involve-card p{color:var(--muted);font-size:14px}
+
+.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.story-card{
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:var(--surface);box-shadow:var(--shadow-1);
+  border:1px solid var(--line);transition:transform .25s ease,box-shadow .25s ease;
+}
+.story-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-green)}
+.story-img{width:100%;height:200px;object-fit:cover}
+.story-body{padding:24px}
+.story-date{color:var(--primary);font-size:13px;font-weight:600;margin-bottom:8px}
+.story-body h3{font-size:17px;font-weight:600;margin-bottom:10px;line-height:1.35}
+.story-body p{color:var(--muted);font-size:14px}
+
+.donate-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.donate-img{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-2)}
+.donate-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.donate-text h3{font-size:clamp(22px,3vw,34px);font-weight:700;line-height:1.3;margin-bottom:16px}
+.donate-text p{color:var(--ink-soft);font-size:16px;margin-bottom:24px}
+.donate-amounts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.amount-chip{
+  padding:10px 20px;border-radius:var(--radius-pill);
+  border:2px solid var(--line);font-weight:600;font-size:15px;
+  color:var(--ink-soft);transition:border-color .2s ease,background .2s ease,color .2s ease;
+}
+.amount-chip:hover,.amount-chip.active{border-color:var(--primary);background:var(--accent-soft);color:var(--primary)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.contact-info h3{font-size:24px;font-weight:700;margin-bottom:16px}
+.contact-info p{color:var(--ink-soft);font-size:16px;margin-bottom:24px}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.contact-detail-icon{
+  width:40px;height:40px;border-radius:var(--radius-sm);
+  background:var(--accent-soft);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex:none;
+}
+.contact-detail span{font-size:15px;color:var(--ink-soft)}
+.contact-form{
+  background:var(--surface);border-radius:var(--radius-lg);
+  padding:32px;box-shadow:var(--shadow-1);border:1px solid var(--line);
+}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px;color:var(--ink-soft)}
+.field input,.field textarea{
+  width:100%;padding:12px 16px;border-radius:var(--radius-sm);
+  border:1.5px solid var(--line);font-family:inherit;font-size:15px;
+  background:var(--bg);color:var(--ink);
+  transition:border-color .2s ease;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--primary)}
+.field textarea{min-height:120px;resize:vertical}
+
+.site-footer{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  color:#fff;padding:64px 0 24px;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-brand h3{font-size:22px;font-weight:700;margin-bottom:12px}
+.footer-brand p{color:#FFFFFFAA;font-size:15px;max-width:300px}
+.footer-col h4{font-size:16px;font-weight:600;margin-bottom:16px;color:#fff}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:#FFFFFFAA;font-size:14px;transition:color .2s ease}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  border-top:1px solid #FFFFFF22;padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{color:#FFFFFF88;font-size:13px}
+.footer-socials{display:flex;gap:12px}
+.footer-socials a{
+  width:36px;height:36px;border-radius:var(--radius-sm);
+  background:#FFFFFF15;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:16px;transition:background .2s ease;
+}
+.footer-socials a:hover{background:#FFFFFF30}
+
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.05);opacity:.85}
+}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes sonner-fade-in{
+  from{opacity:0;transform:translateY(8px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.animate-fade-up{animation:fade-up .6s ease both}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.toast{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  background:var(--primary);color:#fff;
+  padding:16px 24px;border-radius:var(--radius-md);
+  box-shadow:var(--shadow-green);font-size:15px;font-weight:500;
+  animation:sonner-fade-in .3s ease;
+  max-width:360px;
+}
+
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;padding:16px;gap:4px;box-shadow:var(--shadow-2);border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:flex}
+  .values-grid,.projects-grid,.blood-grid,.stories-grid{grid-template-columns:1fr 1fr}
+  .involve-grid{grid-template-columns:1fr 1fr}
+  .about-strip,.health-layout,.donate-layout,.contact-grid{grid-template-columns:1fr}
+  .about-strip-img{min-height:260px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .values-grid,.projects-grid,.blood-grid,.stories-grid,.involve-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .section{padding:56px 0}
+  .hero{min-height:78vh}
+  .about-strip-body,.health-text,.donate-text{padding:24px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const IMAGES = {
+  hero: 'https://images.pexels.com/photos/38065252/pexels-photo-38065252.jpeg?auto=compress&cs=tinysrgb&h=900&w=1600',
+  about: 'https://images.pexels.com/photos/36319737/pexels-photo-36319737.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  community: 'https://images.pexels.com/photos/6995177/pexels-photo-6995177.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  relief: 'https://images.pexels.com/photos/6646902/pexels-photo-6646902.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  medical: 'https://images.pexels.com/photos/33034061/pexels-photo-33034061.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  blood: 'https://images.pexels.com/photos/37553387/pexels-photo-37553387.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  blood2: 'https://images.pexels.com/photos/37553387/pexels-photo-37553387.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  children: 'https://images.pexels.com/photos/35105938/pexels-photo-35105938.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  plantation: 'https://images.pexels.com/photos/7944396/pexels-photo-7944396.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  volunteers: 'https://images.pexels.com/photos/6995180/pexels-photo-6995180.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  hands: 'https://images.pexels.com/photos/36319737/pexels-photo-36319737.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  meeting: 'https://images.pexels.com/photos/6994925/pexels-photo-6994925.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  donate: 'https://images.pexels.com/photos/38429807/pexels-photo-38429807.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  story1: 'https://images.pexels.com/photos/6994938/pexels-photo-6994938.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  story2: 'https://images.pexels.com/photos/18303688/pexels-photo-18303688.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  story3: 'https://images.pexels.com/photos/39523809/pexels-photo-39523809.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+};
+
+const NAV = [
+  { label: 'হোম', href: '#home' },
+  { label: 'পরিচিতি', href: '#about' },
+  { label: 'কার্যক্রম', href: '#projects' },
+];
+
+function renderHeader() {
+  return `
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">হূ</span>
+        <span>হিলফুল ফুজুল ফাউন্ডেশন নাটোর</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <nav class="nav-links" id="navLinks">
+        ${NAV.map(n => `<a class="nav-link" href="${n.href}">${n.label}</a>`).join('')}
+        <a class="nav-link" href="#contact">যোগাযোগ</a>
+        <a class="btn btn-primary" href="#donate" style="padding:8px 20px;font-size:14px">সহযোগিতা করুন</a>
+      </nav>
+    </div>
+  </header>`;
+}
+
+function renderHero() {
+  return `
+  <section class="hero" id="home">
+    <div class="hero-bg" style="background-image:url('${IMAGES.hero}')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="animate-fade-up">
+        <span class="hero-badge">🌙 হিলফুল ফুজুল ফাউন্ডেশন নাটোর — মানবতার পাশে</span>
+        <h1>মানবতার সেবায় একসাথে,<br>পরিবর্তনের পথে সবাই।</h1>
+        <p>সহানুভূতি ও জবাবদিহিতার ওপর গড়া একটি তরুণ সংগঠন। আমরা স্বাস্থ্যসেবা, ত্রাণ বিতরণ, পরিবেশ ও শিক্ষার মাধ্যমে মানুষের পাশে দাঁড়াই।</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#donate">আমাদের সাথে যুক্ত হোন</a>
+          <a class="btn btn-outline" href="#projects" style="color:#fff;border-color:#FFFFFFAA">আমাদের কার্যক্রম দেখুন</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderAbout() {
+  return `
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-strip reveal">
+        <div class="about-strip-img" style="background-image:url('${IMAGES.hands}')"></div>
+        <div class="about-strip-body">
+          <span class="eyebrow">আমাদের সম্পর্কে</span>
+          <h3>সহানুভূতি ও জবাবদিহিতার ওপর গড়া শিক্ষার্থীদের আন্দোলন।</h3>
+          <p>মর্যাদা ও সম্মতির সাথে সেবা — এই নীতিতে হিলফুল ফুজুল ফাউন্ডেশন নাটোর কাজ করে। আমরা বিশ্বাস করি, প্রতিটি মানুষের ন্যায্য অধিকার রক্ষায় একসাথে দাঁড়ালেই পরিবর্তন সম্ভব।</p>
+          <a class="btn btn-outline" href="#contact">হিলফুল ফুজুল ফাউন্ডেশন সম্পর্কে আরও জানুন</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderCommunity() {
+  return `
+  <section class="section section-warm" id="community">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>কমিউনিটির সাথে যুক্ত মানবিক কাজ</h2>
+        <p>আমাদের স্বেচ্ছাসেবকরা নিয়মিত মাঠে থেকে কাজ করেন — ত্রাণ, শিক্ষা, স্বাস্থ্য ও পরিবেশ সব ক্ষেত্রে।</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-icon">🤝</div>
+          <h3>ত্রাণ বিতরণ</h3>
+          <p>বন্যা, শীত ও দুর্যোগের সময় দ্রুত ত্রাণ পৌঁছে দেওয়া আমাদের অগ্রাধিকার।</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">🌱</div>
+          <h3>পরিবেশ ও বৃক্ষরোপণ</h3>
+          <p>নিয়মিত বৃক্ষরোপণ ও পরিবেশ সচেতনতা ক্যাম্পেইনের মাধ্যমে সবুজের পাশে দাঁড়াই।</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">📚</div>
+          <h3>শিক্ষা সহায়তা</h3>
+          <p>সুবিধাবঞ্চিত শিক্ষার্থীদের জন্য বই, উপবৃত্তি ও পড়াশোনার সহযোগিতা দান।</p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderProjects() {
+  return `
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>আপনার সহযোগিতা কোথায় যায়</h2>
+        <p>প্রতিটি প্রকল্প সরাসরি মানুষের কাছে পৌঁছায় — স্বচ্ছতা ও জবাবদিহিতার সাথে।</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <img class="project-img" src="${IMAGES.relief}" alt="জরুরি ত্রাণ বিতরণ — খাদ্য ও জরুরি সামগ্রী">
+          <div class="project-body">
+            <h3>জরুরি ত্রাণ কার্যক্রম</h3>
+            <p>দুর্যোগপ্রবণ এলাকায় খাদ্য, পানি ও জরুরি সামগ্রী বিতরণ।</p>
+            <a class="btn btn-ghost" href="#donate" style="padding:8px 16px;font-size:14px">সহযোগিতা করুন</a>
+          </div>
+        </div>
+        <div class="project-card reveal">
+          <img class="project-img" src="${IMAGES.children}" alt="শিশু শিক্ষা — কুরআন তেলাওয়াতরত শিশু">
+          <div class="project-body">
+            <h3>শিশু শিক্ষা প্রকল্প</h3>
+            <p>সুবিধাবঞ্চিত শিশুদের জন্য শিক্ষা উপকরণ ও পড়াশোনার সহযোগতা।</p>
+            <a class="btn btn-ghost" href="#donate" style="padding:8px 16px;font-size:14px">সহযোগিতা করুন</a>
+          </div>
+        </div>
+        <div class="project-card reveal">
+          <img class="project-img" src="${IMAGES.plantation}" alt="বৃক্ষরোপণ — চারা রোপণ">
+          <div class="project-body">
+            <h3>সবুজ পরিবেশ প্রকল্প</h3>
+            <p>গণবৃক্ষরোপণ ও পরিবেশ সচেতনতা ক্যাম্পেইন আয়োজন।</p>
+            <a class="btn btn-ghost" href="#donate" style="padding:8px 16px;font-size:14px">সহযোগিতা করুন</a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px" class="reveal">
+        <a class="btn btn-primary" href="#donate">সব প্রকল্প</a>
+        <a class="btn btn-outline" href="#donate" style="margin-left:12px">হিলফুল ফুজুল ফাউন্ডেশনকে সহযোগিতা করুন</a>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderHealth() {
+  return `
+  <section class="section section-mint" id="health">
+    <div class="container">
+      <div class="health-layout">
+        <div class="health-img reveal">
+          <img src="${IMAGES.medical}" alt="বিনামূল্যে চিকিৎসা ক্যাম্প — রক্তচাপ পরীক্ষা">
+        </div>
+        <div class="health-text reveal">
+          <span class="eyebrow" style="color:var(--primary);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px">স্বাস্থ্যসেবা</span>
+          <h3>চিকিৎসা ক্যাম্প ও স্বাস্থ্যসেবা</h3>
+          <p>নিয়মিত বিনামূল্যে চিকিৎসা ক্যাম্পের আয়োজন করি গ্রাম ও শহরে। স্বেচ্ছাসেবী চিকিৎসকদের মাধ্যমে স্বাস্থ্যসেবা পৌঁছে দিই প্রান্তিক মানুষের কাছে।</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">সব ক্যাম্পেইন</a>
+            <a class="btn btn-outline" href="#contact">হিলফুল ফুজুল ফাউন্ডেশনের সাথে যোগাযোগ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderBlood() {
+  return `
+  <section class="section" id="blood">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>প্রতিটি ফোঁটাই মূল্যবান।</h2>
+        <p>হিলফুল ফুজুল ফাউন্ডেশন নাটোর রক্তদাতা নেটওয়ার্কে যুক্ত হোন অথবা প্রয়োজনে রোগীর জন্য যাচাইকৃত অনুরোধ জমা দিন। রক্তদাতার সম্মতি ও গোপনীয়তাই প্রথম।</p>
+      </div>
+      <div class="blood-grid">
+        <div class="blood-card reveal">
+          <div class="blood-drop">🩸</div>
+          <h3>রক্তদাতা খুঁজুন</h3>
+          <p>যাচাইকৃত রক্তদাতাদের ডেটাবেস থেকে জরুরি রক্ত খুঁজুন।</p>
+          <a class="btn btn-ghost" href="#contact" style="margin-top:16px">রক্তদাতা খুঁজুন</a>
+        </div>
+        <div class="blood-card reveal">
+          <div class="blood-drop">✚</div>
+          <h3>রক্তদাতা হোন</h3>
+          <p>আপনার রক্তের গ্রুপ রেজিস্টার করে যুক্ত হোন আমাদের নেটওয়ার্কে।</p>
+          <a class="btn btn-ghost" href="#contact" style="margin-top:16px">রক্তদাতা হোন</a>
+        </div>
+        <div class="blood-card reveal">
+          <div class="blood-drop">📋</div>
+          <h3>ক্যাম্পেইন দেখুন</h3>
+          <p>আসন্ন রক্তদান ক্যাম্পেইনের তারিখ ও স্থান দেখুন।</p>
+          <a class="btn btn-ghost" href="#contact" style="margin-top:16px">ক্যাম্পেইন দেখুন</a>
+        </div>
+      </div>
+      <div style="text-align:center" class="reveal">
+        <img src="${IMAGES.blood2}" alt="রক্তদান — রক্তের ব্যাগ ও চিকিৎসা সরঞ্জাম" style="max-width:680px;border-radius:var(--radius-lg);box-shadow:var(--shadow-2);margin:0 auto">
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderInvolve() {
+  return `
+  <section class="section section-warm" id="involve">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>মানবতার পাশে দাঁড়ানোর চারটি উপায়</h2>
+        <p>আপনি যেভাবেই যুক্ত হতে চান, আমরা স্বাগত জানাই।</p>
+      </div>
+      <div class="involve-grid">
+        <div class="involve-card reveal">
+          <div class="involve-icon">👤</div>
+          <h3>সদস্য হোন</h3>
+          <p>স্বেচ্ছাসেবক হিসেবে যুক্ত হোন।</p>
+          <a class="btn btn-ghost" href="#contact" style="margin-top:16px;padding:8px 16px;font-size:14px">সদস্য হোন</a>
+        </div>
+        <div class="involve-card reveal">
+          <div class="involve-icon">📣</div>
+          <h3>ক্যাম্পেইন দেখুন</h3>
+          <p>চলমান ক্যাম্পেইনগুলো দেখুন।</p>
+          <a class="btn btn-ghost" href="#projects" style="margin-top:16px;padding:8px 16px;font-size:14px">ক্যাম্পেইন</a>
+        </div>
+        <div class="involve-card reveal">
+          <div class="involve-icon">📦</div>
+          <h3>প্রকল্প দেখুন</h3>
+          <p>আমাদের চলমান প্রকল্পসমূহ।</p>
+          <a class="btn btn-ghost" href="#projects" style="margin-top:16px;padding:8px 16px;font-size:14px">প্রকল্প</a>
+        </div>
+        <div class="involve-card reveal">
+          <div class="involve-icon">💰</div>
+          <h3>সহযোগিতা করুন</h3>
+          <p>আর্থিক অবদান রাখুন।</p>
+          <a class="btn btn-ghost" href="#donate" style="margin-top:16px;padding:8px 16px;font-size:14px">দান করুন</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderStories() {
+  return `
+  <section class="section section-green-soft" id="stories">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>মাঠ থেকে গল্প</h2>
+        <p>হিলফুল ফুজুল ফাউন্ডেশন নাটোর দলের ঘোষণা, ক্যাম্পেইন প্রতিবেদন ও মানবিক আপডেট।</p>
+      </div>
+      <div class="stories-grid">
+        <div class="story-card reveal">
+          <img class="story-img" src="${IMAGES.story1}" alt="শীতজনপদে কম্বল বিতরণ">
+          <div class="story-body">
+            <span class="story-date">১২ নভেম্বর ২০২৬</span>
+            <h3>শীতজনপদে কম্বল বিতরণ</h3>
+            <p>উত্তরাঞ্চলের তিন জেলায় ৫০০+ পরিবারের কাছে কম্বল পৌঁছে দেওয়া হয়েছে।</p>
+          </div>
+        </div>
+        <div class="story-card reveal">
+          <img class="story-img" src="${IMAGES.story2}" alt="সবুজ প্রতিশ্রুতি — চারা রোপণ">
+          <div class="story-body">
+            <span class="story-date">০৫ নভেম্বর ২০২৬</span>
+            <h3>সবুজ প্রতিশ্রুতি — ১০০০ গাছ</h3>
+            <p>মনসহ স্থানীয় স্কুলে বৃক্ষরোপণ ক্যাম্পেইনে ১০০০ গাছ রোপণ সম্পন্ন।</p>
+          </div>
+        </div>
+        <div class="story-card reveal">
+          <img class="story-img" src="${IMAGES.story3}" alt="শিক্ষা উপকরণ বিতরণ">
+          <div class="story-body">
+            <span class="story-date">২৮ অক্টোবর ২০২৬</span>
+            <h3>শিক্ষা উপকরণ বিতরণ</h3>
+            <p>২০০ শিক্ষার্থীর কাছে বই, খাতা ও স্টেশনারি পৌঁছে দেওয়া হয়েছে।</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px" class="reveal">
+        <a class="btn btn-primary" href="#contact">সব আপডেট</a>
+        <a class="btn btn-outline" href="#contact" style="margin-left:12px">হিলফুল ফুজুল ফাউন্ডেশনের সাথে যোগাযোগ</a>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderDonate() {
+  return `
+  <section class="section" id="donate">
+    <div class="container">
+      <div class="donate-layout">
+        <div class="donate-img reveal">
+          <img src="${IMAGES.donate}" alt="দান বক্সে অর্থ দান — জাকাত ও সাদাকা">
+        </div>
+        <div class="donate-text reveal">
+          <span class="eyebrow" style="color:var(--primary);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px">সহযোগিতা</span>
+          <h3>আপনার সহযোগিতা স্বাস্থ্য, সহায়তা ও আশা নিয়ে আসে</h3>
+          <p>আপনার প্রতিটি অবদান সরাসরি মাঠে কাজ করে — কোনো মধ্যস্বত্বভোগী ছাড়া। স্বচ্ছতার সাথে প্রতিটি খরচের হিসাব আমরা প্রকাশ করি।</p>
+          <div class="donate-amounts">
+            <button class="amount-chip" data-amount="100">৳১০০</button>
+            <button class="amount-chip active" data-amount="500">৳৫০০</button>
+            <button class="amount-chip" data-amount="1000">৳১,০০০</button>
+            <button class="amount-chip" data-amount="5000">৳৫,০০০</button>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">সাধারণ তহবিলে সহযোগিতা করুন</a>
+            <a class="btn btn-outline" href="#projects">আমাদের প্রকল্পে সহযোগিতা করুন</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderContact() {
+  return `
+  <section class="section section-warm" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>যোগাযোগ</h2>
+        <p>প্রশ্ন বা অংশীদারিত্বের প্রস্তাব? আমাদের সাথে যোগাযোগ করুন।</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>হিলফুল ফুজুল ফাউন্ডেশন নাটোর</h3>
+          <p>মানবতার জন্য একসাথে, পরিবর্তনের পথে সবাই। আপনার যেকোনো প্রশ্ন বা সহযোগিতার জন্য আমরা প্রস্তুত।</p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <span>লালপুর বাজার, নাটোর</span>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <span>০১৩৩৩৮৭২৬৯১, ০১৭৪৫২৮৫৮২৫</span>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <span>hilfulfujul@gmail.com</span>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🌐</div>
+            <span>facebook.com/hilfulfujul</span>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="field">
+            <label>নাম</label>
+            <input type="text" name="name" placeholder="আপনার নাম" required>
+          </div>
+          <div class="field">
+            <label>মোবাইল</label>
+            <input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
+          </div>
+          <div class="field">
+            <label>বার্তা</label>
+            <textarea name="message" placeholder="আপনার বার্তা লিখুন" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">পাঠান</button>
+        </form>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderFooter() {
+  return `
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>হিলফুল ফুজুল ফাউন্ডেশন নাটোর</h3>
+          <p>মানবতার জন্য একসাথে, পরিবর্তনের পথে সবাই। সহানুভূতি, স্বচ্ছতা ও সেবার আত্মায় কাজ করছি।</p>
+        </div>
+        <div class="footer-col">
+          <h4>সংগঠন</h4>
+          <ul>
+            <li><a href="#about">পরিচিতি</a></li>
+            <li><a href="#projects">কার্যক্রম</a></li>
+            <li><a href="#stories">আপডেট</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>যুক্ত হোন</h4>
+          <ul>
+            <li><a href="#involve">সদস্য হোন</a></li>
+            <li><a href="#donate">সহযোগিতা করুন</a></li>
+            <li><a href="#blood">রক্তদাতা হোন</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>যোগাযোগ</h4>
+          <ul>
+            <li><a href="#contact">নাটোর, বাংলাদেশ</a></li>
+            <li><a href="tel:01333872691">০১৩৩৩৮৭২৬৯১</a></li>
+            <li><a href="mailto:hilfulfujul@gmail.com">ইমেইল</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ২০২৬ হিলফুল ফুজুল ফাউন্ডেশন নাটোর। সর্বস্বত্ব সংরক্ষিত।</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+    </div>
+  </footer>`;
+}
+
+function renderApp() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    ${renderHeader()}
+    ${renderHero()}
+    ${renderAbout()}
+    ${renderCommunity()}
+    ${renderProjects()}
+    ${renderHealth()}
+    ${renderBlood()}
+    ${renderInvolve()}
+    ${renderStories()}
+    ${renderDonate()}
+    ${renderContact()}
+    ${renderFooter()}
+  `;
+  initInteractions();
+}
+
+function initInteractions() {
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.amount-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.amount-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name');
+    const phone = data.get('phone');
+    const msg = data.get('message');
+    const body = encodeURIComponent(`নাম: ${name}\nমোবাইল: ${phone}\n\n${msg}`);
+    window.location.href = `mailto:hilfulfujul@gmail.com?subject=হিলফুল ফুজুল ফাউন্ডেশন নাটোর — যোগাযোগ&body=${body}`;
+    showToast('ধন্যবাদ! আপনার বার্তা পাঠানো হচ্ছে...');
+    form.reset();
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navItems.forEach(n => {
+      n.classList.toggle('active', n.getAttribute('href') === '#' + current);
+    });
+  });
+}
+
+function showToast(msg) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+renderApp();
+</script>
+</body>
+</html>
